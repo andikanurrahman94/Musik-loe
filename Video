@@ -1,0 +1,97 @@
+01    <html>
+02  <head>
+03	<style type="text/css">
+04	.ytThumb {
+05	    margin:5px;
+06	        margin-right:20px;
+07	        margin-left:22px;
+08	};
+09	</style>
+10	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/
+11	jquery.min.js"></script>
+12	 
+13	<script type="text/javascript">
+14	 
+15	$("document").ready(function() {
+16	 
+17	    var linkToYouTube = "http://www.youtube.com/embed/";
+18	     
+19	    // When a img of class ytThumb is clicked call the function changeTheVideo
+20	    $('.ytThumb').bind('click',changeTheVideo);
+21	     
+22	    function changeTheVideo() {
+23	        // Gets the value for alt for the thumbnail that was clicked
+24	        var videoCode = $(this).attr('alt');
+25	         
+26	        // Saves the url for the video that I want to display in the iframe
+27	        var newVideoLoc = linkToYouTube + videoCode + "?wmode=transparent";
+28	         
+29	        // Assigns the YouTube URL to the src for the video in the iframe
+30	        $('#ytVideo').attr("src", newVideoLoc);
+31	    }
+32	 
+33	});
+34	</script>
+35	 
+36	</head>
+37	<body>
+38	 
+39	<!-- FB.init initializes the JavaScript SDK with your app id, allowing you to then make calls against the Facebook API -->
+40	<div id="fb-root"></div>
+41	<script src="http://connect.facebook.net/en_US/all.js" charset="utf-8"></script>
+42	<script>
+43	FB.init({appId: '147514068671652',
+44	status: true, // Check login status
+45	cookie: true, // Enables cookies so server can access the session
+46	xfbml: true // Parse XFBML
+47	});
+48	</script>
+49	 
+50	<!-- Allows a facebook user to bookmark your tab -->
+51	<fb:bookmark></fb:bookmark>
+52	 
+53	<h2>Top Videos</h2>
+54	<div id="topVideo">
+55	 
+56	<!-- iframe contains my YouTube video. It will change if the thumbnails below are clicked. wmode=transparent must be used or the iframe will be at the highest z-index and cover any popups -->
+57	<iframe id="ytVideo" width="500" height="311" src="http://www.youtube.com/embed/Fkxz0Tvhbd4?wmode=transparent" frameborder="0" allowfullscreen></iframe>
+58	</div>
+59	 
+60	<script type="text/javascript">
+61	<!-- Hide JavaScript Code
+62	 
+63	// Used to track when I need to insert a new line break
+64	var insertABrk = 1;
+65	 
+66	// Creates an array that contains all my YouTube video codes
+67	var arrayOfVideos = ["ZUXtGQkJcQ0","OzDd8z8vIFY","UQi-L-_chcc","DRR9fOXkfRE","BDo0lL_MqYo","_cLvpJY2deo","_iRIPJHrdXg",
+68	"6bNwBJ4dky8"];
+69	 
+70	document.write('<br />');
+71	 
+72	// Cycles through all of the YouTube codes that are stored in the array
+73	for(i in arrayOfVideos)
+74	{
+75	    // Prints out the img tag with the src being the default YouTubethumbnail
+76	    // YouTube thumbnails are at http://img.youtube.com/vi/YTCODE/default.jpg
+77	    document.write('<img class="ytThumb" src="http://img.youtube.com/vi/'+ arrayOfVideos[i] + '/default.jpg" alt="' + arrayOfVideos[i] + '" />');
+78	 
+79	    // Outputs a line break after every fourth img is displayed
+80	    if(insertABrk == 3)
+81	    {
+82	        document.write('<br />');
+83	        insertABrk = 0;
+84	    }
+85	    insertABrk++;
+86	}
+87	 
+88	-->
+89	</script>
+90	 
+91	<br /><br />
+92	 
+93	<!-- Allows the user to post to their wall from in your app. Also allows them to like your app -->
+94	<div id="comments"><fb:comments numposts="4" title="My Blog Comments" simple="1"></fb:comments></div>
+95	 
+96	</body>
+97	</html>
