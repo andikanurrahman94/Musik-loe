@@ -40,7 +40,7 @@
 40	<div id="fb-root"></div>
 41	<script src="http://connect.facebook.net/en_US/all.js" charset="utf-8"></script>
 42	<script>
-43	FB.init({appId: '147514068671652',
+43	FB.init({appId: '1368329016515061',
 44	status: true, // Check login status
 45	cookie: true, // Enables cookies so server can access the session
 46	xfbml: true // Parse XFBML
